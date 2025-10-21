@@ -14,10 +14,11 @@ const Changelog = () => {
         <div className="changelog-entry">
           <div className="changelog-date">January 25, 2025</div>
           <div className="changelog-changes">
-            <h3>Version 1.0.0 - Production "Live Soon" Release</h3>
+            <h3>Version 1.0.1 - Fixed GitHub Pages Deployment</h3>
             <ul className="changelog-list">
               <li>shipped this website thanks to cursor AI and a bunch of prompts</li>
               <li>just basic header and footer</li>
+              <li>fixed github pages deployment and added automated workflow</li>
             </ul>
           </div>
         </div>
