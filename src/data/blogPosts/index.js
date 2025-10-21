@@ -1,16 +1,9 @@
-import { blogPost1 } from './blogPost1.js';
-import { blogPost2 } from './blogPost2.js';
-import { blogPost3 } from './blogPost3.js';
-import { blogPost4 } from './blogPost4.js';
-import { blogPost5 } from './blogPost5.js';
+// Empty blog posts array for Live Soon state
+export const blogPosts = [];
 
-export const blogPosts = [
-  blogPost1,
-  blogPost2,
-  blogPost3,
-  blogPost4,
-  blogPost5
-];
-
-// Export individual posts for direct access
-export { blogPost1, blogPost2, blogPost3, blogPost4, blogPost5 };
+// Export individual posts for direct access (keeping structure for future)
+export { blogPost1 } from './blogPost1.js';
+export { blogPost2 } from './blogPost2.js';
+export { blogPost3 } from './blogPost3.js';
+export { blogPost4 } from './blogPost4.js';
+export { blogPost5 } from './blogPost5.js';

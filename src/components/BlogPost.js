@@ -13,7 +13,7 @@ const BlogPost = () => {
           <h1 className="blog-post-not-found-title">
             Post Not Found
           </h1>
-          <p style={{ marginBottom: '30px', color: '#718096' }}>
+          <p className="blog-post-not-found-text">
             The blog post you're looking for doesn't exist.
           </p>
           <Link to="/" className="btn">
