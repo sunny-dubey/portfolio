@@ -876,6 +876,85 @@ body {
   margin: 0 auto;
 }
 
+/* Resources Page Styles */
+.resources-content {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.resource-category {
+  margin-bottom: var(--spacing-lg);
+}
+
+.resource-category-title {
+  font-size: var(--font-size-xl);
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: var(--spacing-sm);
+  padding-bottom: var(--spacing-xs);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.resource-list {
+  display: grid;
+  gap: var(--spacing-xs);
+}
+
+.resource-item {
+  padding: var(--spacing-sm) 0;
+  border-bottom: 1px solid var(--border-color);
+  transition: all 0.2s ease;
+}
+
+.resource-item:last-child {
+  border-bottom: none;
+}
+
+.resource-item:hover {
+  background-color: var(--hover-bg);
+  padding-left: var(--spacing-sm);
+  border-radius: var(--radius-sm);
+}
+
+.resource-title {
+  margin: 0 0 var(--spacing-xs) 0;
+  font-size: var(--font-size-base);
+  font-weight: 500;
+}
+
+.resource-link {
+  color: var(--link-color);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.resource-link:hover {
+  color: var(--link-hover);
+  text-decoration: underline;
+}
+
+.resource-description {
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin: 0;
+  font-size: var(--font-size-sm);
+}
+
+/* Responsive Design for Resources */
+@media (max-width: 768px) {
+  .resource-list {
+    gap: var(--spacing-sm);
+  }
+  
+  .resource-item {
+    padding: var(--spacing-sm);
+  }
+  
+  .resource-category-title {
+    font-size: var(--font-size-xl);
+  }
+}
+
 /* Now Page Styles */
 .now-content {
   max-width: 800px;

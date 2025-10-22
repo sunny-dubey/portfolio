@@ -8,6 +8,7 @@ import About from './components/About';
 import Now from './components/Now';
 import Uses from './components/Uses';
 import Changelog from './components/Changelog';
+import Resources from './components/Resources';
 import Footer from './components/Footer';
 import './App.css';
 
@@ -25,6 +26,7 @@ function App() {
                   <Route path="/uses" element={<Uses />} />
                   <Route path="/now" element={<Now />} />
                   <Route path="/changelog" element={<Changelog />} />
+                  <Route path="/resources" element={<Resources />} />
                   <Route path="/about" element={<About />} />
                 </Routes>
         </main>
