@@ -94,6 +94,8 @@
 .main-content {
   flex: 1;
   background-color: var(--bg-color);
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
 }
 
 code {
@@ -112,6 +114,8 @@ body {
   font-size: var(--font-size-base);
   transition: background-color 0.3s ease, color 0.3s ease;
   font-feature-settings: "liga" 1, "calt" 1; /* Enable ligatures for code fonts */
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: contain;
 }
 
 .container {

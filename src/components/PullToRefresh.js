@@ -33,7 +33,7 @@ const PullToRefresh = ({
   } = useMobileGestures({
     pullToRefreshThreshold: threshold,
     onPullToRefresh: handleRefresh,
-    enabled: !disabled
+    enabled: !disabled && !isRefreshing
   });
 
   const getRefreshText = () => {

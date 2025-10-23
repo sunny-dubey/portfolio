@@ -54,19 +54,14 @@ const useMobileGestures = (options = {}) => {
     const deltaY = touch.clientY - touchStart.y;
     const deltaTime = Date.now() - touchStart.time;
 
-    // Prevent default if we're handling the gesture
-    if (Math.abs(deltaX) > 10 || Math.abs(deltaY) > 10) {
-      e.preventDefault();
-    }
-
-    // Pull to refresh logic
+    // Pull to refresh logic - only prevent default when actually pulling to refresh
     if (isAtTop.current && deltaY > 0 && deltaTime > 100) {
       setIsPulling(true);
       const distance = Math.min(deltaY * 0.5, pullToRefreshThreshold * 1.5);
       setPullDistance(distance);
       
+      // Only prevent default when we're actually doing pull-to-refresh
       if (distance >= pullToRefreshThreshold && !isRefreshing) {
-        // Visual feedback that refresh will trigger
         e.preventDefault();
       }
     }
@@ -117,7 +112,7 @@ const useMobileGestures = (options = {}) => {
     const element = elementRef.current || document;
     
     if (enabled) {
-      element.addEventListener('touchstart', handleTouchStart, { passive: false });
+      element.addEventListener('touchstart', handleTouchStart, { passive: true });
       element.addEventListener('touchmove', handleTouchMove, { passive: false });
       element.addEventListener('touchend', handleTouchEnd, { passive: true });
     }
