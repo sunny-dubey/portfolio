@@ -4,6 +4,14 @@ const Changelog = () => {
   // Changelog data - easy to add new entries
   const changelogEntries = [
     {
+      date: "Oct 23, 2025",
+      version: "1.2.0",
+      title: "A small change in mobile view",
+      changes: [
+        "you can now scroll through the website on mobile"
+      ]
+    },
+    {
       date: "Oct 22, 2025",
       version: "1.1.0",
       title: "Fixed GitHub Pages Deployment",

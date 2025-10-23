@@ -1,0 +1,142 @@
+import { useState, useEffect, useRef } from 'react';
+
+const useMobileGestures = (options = {}) => {
+  const {
+    swipeThreshold = 50,
+    pullToRefreshThreshold = 80,
+    onSwipeLeft = null,
+    onSwipeRight = null,
+    onPullToRefresh = null,
+    enabled = true
+  } = options;
+
+  const [touchStart, setTouchStart] = useState(null);
+  const [touchEnd, setTouchEnd] = useState(null);
+  const [pullDistance, setPullDistance] = useState(0);
+  const [isPulling, setIsPulling] = useState(false);
+  const [isRefreshing, setIsRefreshing] = useState(false);
+  
+  const elementRef = useRef(null);
+  const lastTouchY = useRef(0);
+  const isAtTop = useRef(false);
+
+  // Check if element is at the top
+  const checkIfAtTop = () => {
+    if (elementRef.current) {
+      const scrollTop = elementRef.current.scrollTop || window.pageYOffset;
+      isAtTop.current = scrollTop === 0;
+    }
+  };
+
+  // Handle touch start
+  const handleTouchStart = (e) => {
+    if (!enabled) return;
+    
+    checkIfAtTop();
+    const touch = e.touches[0];
+    setTouchStart({
+      x: touch.clientX,
+      y: touch.clientY,
+      time: Date.now()
+    });
+    setTouchEnd(null);
+    lastTouchY.current = touch.clientY;
+    setIsPulling(false);
+    setPullDistance(0);
+  };
+
+  // Handle touch move
+  const handleTouchMove = (e) => {
+    if (!enabled || !touchStart) return;
+
+    const touch = e.touches[0];
+    const deltaX = touch.clientX - touchStart.x;
+    const deltaY = touch.clientY - touchStart.y;
+    const deltaTime = Date.now() - touchStart.time;
+
+    // Prevent default if we're handling the gesture
+    if (Math.abs(deltaX) > 10 || Math.abs(deltaY) > 10) {
+      e.preventDefault();
+    }
+
+    // Pull to refresh logic
+    if (isAtTop.current && deltaY > 0 && deltaTime > 100) {
+      setIsPulling(true);
+      const distance = Math.min(deltaY * 0.5, pullToRefreshThreshold * 1.5);
+      setPullDistance(distance);
+      
+      if (distance >= pullToRefreshThreshold && !isRefreshing) {
+        // Visual feedback that refresh will trigger
+        e.preventDefault();
+      }
+    }
+
+    setTouchEnd({
+      x: touch.clientX,
+      y: touch.clientY,
+      time: Date.now()
+    });
+  };
+
+  // Handle touch end
+  const handleTouchEnd = (e) => {
+    if (!enabled || !touchStart || !touchEnd) return;
+
+    const deltaX = touchEnd.x - touchStart.x;
+    const deltaY = touchEnd.y - touchStart.y;
+    const deltaTime = touchEnd.time - touchStart.time;
+    const velocity = Math.abs(deltaX) / deltaTime;
+
+    // Reset pull to refresh
+    if (isPulling) {
+      if (pullDistance >= pullToRefreshThreshold && onPullToRefresh) {
+        setIsRefreshing(true);
+        onPullToRefresh().finally(() => {
+          setIsRefreshing(false);
+        });
+      }
+      setIsPulling(false);
+      setPullDistance(0);
+    }
+
+    // Swipe detection
+    if (Math.abs(deltaX) > swipeThreshold && velocity > 0.1) {
+      if (deltaX > 0 && onSwipeRight) {
+        onSwipeRight();
+      } else if (deltaX < 0 && onSwipeLeft) {
+        onSwipeLeft();
+      }
+    }
+
+    setTouchStart(null);
+    setTouchEnd(null);
+  };
+
+  // Add event listeners
+  useEffect(() => {
+    const element = elementRef.current || document;
+    
+    if (enabled) {
+      element.addEventListener('touchstart', handleTouchStart, { passive: false });
+      element.addEventListener('touchmove', handleTouchMove, { passive: false });
+      element.addEventListener('touchend', handleTouchEnd, { passive: true });
+    }
+
+    return () => {
+      element.removeEventListener('touchstart', handleTouchStart);
+      element.removeEventListener('touchmove', handleTouchMove);
+      element.removeEventListener('touchend', handleTouchEnd);
+    };
+  }, [enabled, touchStart, touchEnd, pullDistance, isPulling]);
+
+  return {
+    elementRef,
+    pullDistance,
+    isPulling,
+    isRefreshing,
+    swipeThreshold,
+    pullToRefreshThreshold
+  };
+};
+
+export default useMobileGestures;
