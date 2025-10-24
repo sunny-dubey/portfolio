@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import ThemeToggle from './ThemeToggle';
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -73,6 +74,7 @@ const Header = () => {
             <Link to='/now'>now</Link>
             <Link to='/changelog'>changelog</Link>
             <Link to='/resources'>resources</Link>
+            <ThemeToggle />
           </nav>
 
           {/* Mobile Hamburger Button */}
@@ -120,6 +122,9 @@ const Header = () => {
               <Link to='/resources' onClick={handleLinkClick}>
                 resources
               </Link>
+              <div className='mobile-theme-toggle'>
+                <ThemeToggle />
+              </div>
             </nav>
           </div>
         )}

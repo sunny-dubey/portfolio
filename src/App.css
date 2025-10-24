@@ -4,14 +4,14 @@
 
 /* Light Mode (Default) - Professional & Personal */
 :root {
-  --bg-color: #fafafa;
-  --text-color: #222222;
-  --text-secondary: #4b5563;
-  --text-muted: #6b7280;
-  --border-color: #e5e7eb;
-  --hover-bg: #f3f4f6;
-  --code-bg: #f9fafb;
-  --code-border: #e5e7eb;
+  --bg-color: #f8f9fa;
+  --text-color: #2d3748;
+  --text-secondary: #4a5568;
+  --text-muted: #718096;
+  --border-color: #e2e8f0;
+  --hover-bg: #edf2f7;
+  --code-bg: #f7fafc;
+  --code-border: #e2e8f0;
   --link-color: #1e40af;
   --link-hover: #1d4ed8;
   --accent-primary: #1e40af;
@@ -58,22 +58,20 @@
 }
 
 /* Dark Mode - Professional & Easy on Eyes */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --bg-color: #121212;
-    --text-color: #e5e5e5;
-    --text-secondary: #d1d5db;
-    --text-muted: #9ca3af;
-    --border-color: #374151;
-    --hover-bg: #1f2937;
-    --code-bg: #1f2937;
-    --code-border: #374151;
-    --link-color: #14b8a6;
-    --link-hover: #0d9488;
-    --accent-primary: #14b8a6;
-    --accent-secondary: #fb923c;
-    --accent-hover: #fcd34d;
-  }
+.dark-mode {
+  --bg-color: #1a202c;
+  --text-color: #e2e8f0;
+  --text-secondary: #cbd5e0;
+  --text-muted: #a0aec0;
+  --border-color: #4a5568;
+  --hover-bg: #2d3748;
+  --code-bg: #2d3748;
+  --code-border: #4a5568;
+  --link-color: #14b8a6;
+  --link-hover: #0d9488;
+  --accent-primary: #14b8a6;
+  --accent-secondary: #fb923c;
+  --accent-hover: #fcd34d;
 }
 
 /* nginx.org Color Scheme */
@@ -1316,6 +1314,14 @@ body {
   border-bottom: none;
 }
 
+.mobile-theme-toggle {
+  padding: var(--spacing-sm) 0;
+  border-top: 1px solid var(--border-color);
+  margin-top: var(--spacing-sm);
+  display: flex;
+  justify-content: center;
+}
+
 /* Animations */
 @keyframes fadeIn {
   from {
@@ -1560,6 +1566,44 @@ body {
     padding-left: env(safe-area-inset-left);
     padding-right: env(safe-area-inset-right);
   }
+}
+
+/* Theme Toggle Styles */
+.theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: var(--spacing-sm);
+  border-radius: var(--radius-sm);
+  transition: all 0.2s ease;
+  color: var(--text-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+}
+
+.theme-toggle:hover {
+  background-color: var(--hover-bg);
+  color: var(--accent-primary);
+  transform: scale(1.05);
+}
+
+.theme-toggle:focus {
+  outline: 2px solid var(--accent-primary);
+  outline-offset: 2px;
+}
+
+.theme-toggle-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease;
+}
+
+.theme-toggle:hover .theme-toggle-icon {
+  transform: rotate(15deg);
 }
 
 /* Skip to content link for accessibility */

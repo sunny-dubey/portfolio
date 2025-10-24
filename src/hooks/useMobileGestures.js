@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 
 const useMobileGestures = (options = {}) => {
   const {
@@ -29,81 +29,101 @@ const useMobileGestures = (options = {}) => {
   };
 
   // Handle touch start
-  const handleTouchStart = e => {
-    if (!enabled) return;
+  const handleTouchStart = useCallback(
+    e => {
+      if (!enabled) return;
 
-    checkIfAtTop();
-    const touch = e.touches[0];
-    setTouchStart({
-      x: touch.clientX,
-      y: touch.clientY,
-      time: Date.now(),
-    });
-    setTouchEnd(null);
-    lastTouchY.current = touch.clientY;
-    setIsPulling(false);
-    setPullDistance(0);
-  };
-
-  // Handle touch move
-  const handleTouchMove = e => {
-    if (!enabled || !touchStart) return;
-
-    const touch = e.touches[0];
-    const deltaY = touch.clientY - touchStart.y;
-    const deltaTime = Date.now() - touchStart.time;
-
-    // Pull to refresh logic - only prevent default when actually pulling to refresh
-    if (isAtTop.current && deltaY > 0 && deltaTime > 100) {
-      setIsPulling(true);
-      const distance = Math.min(deltaY * 0.5, pullToRefreshThreshold * 1.5);
-      setPullDistance(distance);
-
-      // Only prevent default when we're actually doing pull-to-refresh
-      if (distance >= pullToRefreshThreshold && !isRefreshing) {
-        e.preventDefault();
-      }
-    }
-
-    setTouchEnd({
-      x: touch.clientX,
-      y: touch.clientY,
-      time: Date.now(),
-    });
-  };
-
-  // Handle touch end
-  const handleTouchEnd = e => {
-    if (!enabled || !touchStart || !touchEnd) return;
-
-    const deltaX = touchEnd.x - touchStart.x;
-    const deltaTime = touchEnd.time - touchStart.time;
-    const velocity = Math.abs(deltaX) / deltaTime;
-
-    // Reset pull to refresh
-    if (isPulling) {
-      if (pullDistance >= pullToRefreshThreshold && onPullToRefresh) {
-        setIsRefreshing(true);
-        onPullToRefresh().finally(() => {
-          setIsRefreshing(false);
-        });
-      }
+      checkIfAtTop();
+      const touch = e.touches[0];
+      setTouchStart({
+        x: touch.clientX,
+        y: touch.clientY,
+        time: Date.now(),
+      });
+      setTouchEnd(null);
+      lastTouchY.current = touch.clientY;
       setIsPulling(false);
       setPullDistance(0);
-    }
+    },
+    [enabled]
+  );
 
-    // Swipe detection
-    if (Math.abs(deltaX) > swipeThreshold && velocity > 0.1) {
-      if (deltaX > 0 && onSwipeRight) {
-        onSwipeRight();
-      } else if (deltaX < 0 && onSwipeLeft) {
-        onSwipeLeft();
+  // Handle touch move
+  const handleTouchMove = useCallback(
+    e => {
+      if (!enabled || !touchStart) return;
+
+      const touch = e.touches[0];
+      const deltaY = touch.clientY - touchStart.y;
+      const deltaTime = Date.now() - touchStart.time;
+
+      // Pull to refresh logic - only prevent default when actually pulling to refresh
+      if (isAtTop.current && deltaY > 0 && deltaTime > 100) {
+        setIsPulling(true);
+        const distance = Math.min(deltaY * 0.5, pullToRefreshThreshold * 1.5);
+        setPullDistance(distance);
+
+        // Only prevent default when we're actually doing pull-to-refresh
+        if (distance >= pullToRefreshThreshold && !isRefreshing) {
+          e.preventDefault();
+        }
       }
-    }
 
-    setTouchStart(null);
-    setTouchEnd(null);
-  };
+      setTouchEnd({
+        x: touch.clientX,
+        y: touch.clientY,
+        time: Date.now(),
+      });
+    },
+    [enabled, touchStart, pullToRefreshThreshold, isRefreshing]
+  );
+
+  // Handle touch end
+  const handleTouchEnd = useCallback(
+    e => {
+      if (!enabled || !touchStart || !touchEnd) return;
+
+      const deltaX = touchEnd.x - touchStart.x;
+      const deltaTime = touchEnd.time - touchStart.time;
+      const velocity = Math.abs(deltaX) / deltaTime;
+
+      // Reset pull to refresh
+      if (isPulling) {
+        if (pullDistance >= pullToRefreshThreshold && onPullToRefresh) {
+          setIsRefreshing(true);
+          onPullToRefresh().finally(() => {
+            setIsRefreshing(false);
+          });
+        }
+        setIsPulling(false);
+        setPullDistance(0);
+      }
+
+      // Swipe detection
+      if (Math.abs(deltaX) > swipeThreshold && velocity > 0.1) {
+        if (deltaX > 0 && onSwipeRight) {
+          onSwipeRight();
+        } else if (deltaX < 0 && onSwipeLeft) {
+          onSwipeLeft();
+        }
+      }
+
+      setTouchStart(null);
+      setTouchEnd(null);
+    },
+    [
+      enabled,
+      touchStart,
+      touchEnd,
+      isPulling,
+      pullDistance,
+      pullToRefreshThreshold,
+      onPullToRefresh,
+      swipeThreshold,
+      onSwipeRight,
+      onSwipeLeft,
+    ]
+  );
 
   // Add event listeners
   useEffect(() => {
@@ -124,16 +144,7 @@ const useMobileGestures = (options = {}) => {
       element.removeEventListener('touchmove', handleTouchMove);
       element.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [
-    enabled,
-    touchStart,
-    touchEnd,
-    pullDistance,
-    isPulling,
-    handleTouchStart,
-    handleTouchMove,
-    handleTouchEnd,
-  ]);
+  }, [enabled, handleTouchStart, handleTouchMove, handleTouchEnd]);
 
   return {
     elementRef,

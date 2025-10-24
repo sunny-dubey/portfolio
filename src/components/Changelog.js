@@ -6,10 +6,11 @@ const Changelog = () => {
     {
       date: 'Oct 24, 2025',
       version: '1.4.0',
-      title: 'Google Analytics & linter for clean code',
+      title: 'Google Analytics is in, code is cleaner, and hello dark mode 🎉',
       changes: [
         'added google analytics - its free',
         'added linter to keep things tidy',
+        'dark mode toggle',
       ],
     },
     {

@@ -17,7 +17,14 @@ export const ThemeProvider = ({ children }) => {
     // Load theme preference from localStorage
     const savedTheme = localStorage.getItem('theme');
     if (savedTheme) {
-      setIsDarkMode(savedTheme === 'dark');
+      const isDark = savedTheme === 'dark';
+      setIsDarkMode(isDark);
+      // Apply theme class to document
+      document.documentElement.classList.toggle('dark-mode', isDark);
+      document.documentElement.classList.toggle('light-mode', !isDark);
+    } else {
+      // Default to dark mode if no preference saved
+      document.documentElement.classList.add('dark-mode');
     }
   }, []);
 
@@ -25,6 +32,10 @@ export const ThemeProvider = ({ children }) => {
     const newTheme = !isDarkMode;
     setIsDarkMode(newTheme);
     localStorage.setItem('theme', newTheme ? 'dark' : 'light');
+
+    // Apply theme class to document
+    document.documentElement.classList.toggle('dark-mode', newTheme);
+    document.documentElement.classList.toggle('light-mode', !newTheme);
   };
 
   return (

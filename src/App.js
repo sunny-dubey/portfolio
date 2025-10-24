@@ -8,6 +8,7 @@ import {
 import Header from './components/Header';
 import Footer from './components/Footer';
 import PullToRefresh from './components/PullToRefresh';
+import { ThemeProvider } from './context/ThemeContext';
 import { pageview } from './utils/analytics';
 import './App.css';
 
@@ -58,30 +59,32 @@ function App() {
   };
 
   return (
-    <Router>
-      <div className='App'>
-        <PageTracker />
-        <Header />
-        <main id='main-content' className='main-content'>
-          <PullToRefresh onRefresh={handleRefresh}>
-            <Suspense fallback={<LoadingSpinner />}>
-              <Routes>
-                <Route path='/' element={<BlogList />} />
-                <Route path='/blog' element={<BlogList />} />
-                <Route path='/post/:id' element={<BlogPost />} />
-                <Route path='/projects' element={<Projects />} />
-                <Route path='/uses' element={<Uses />} />
-                <Route path='/now' element={<Now />} />
-                <Route path='/changelog' element={<Changelog />} />
-                <Route path='/resources' element={<Resources />} />
-                <Route path='/about' element={<About />} />
-              </Routes>
-            </Suspense>
-          </PullToRefresh>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <ThemeProvider>
+      <Router>
+        <div className='App'>
+          <PageTracker />
+          <Header />
+          <main id='main-content' className='main-content'>
+            <PullToRefresh onRefresh={handleRefresh}>
+              <Suspense fallback={<LoadingSpinner />}>
+                <Routes>
+                  <Route path='/' element={<BlogList />} />
+                  <Route path='/blog' element={<BlogList />} />
+                  <Route path='/post/:id' element={<BlogPost />} />
+                  <Route path='/projects' element={<Projects />} />
+                  <Route path='/uses' element={<Uses />} />
+                  <Route path='/now' element={<Now />} />
+                  <Route path='/changelog' element={<Changelog />} />
+                  <Route path='/resources' element={<Resources />} />
+                  <Route path='/about' element={<About />} />
+                </Routes>
+              </Suspense>
+            </PullToRefresh>
+          </main>
+          <Footer />
+        </div>
+      </Router>
+    </ThemeProvider>
   );
 }
 
