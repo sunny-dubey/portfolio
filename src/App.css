@@ -1,5 +1,4 @@
-/* Import Google Fonts - Developer-focused typography */
-@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600&family=Source+Code+Pro:wght@300;400;500;600&family=JetBrains+Mono:wght@300;400;500;600&display=swap');
+/* Fonts are now loaded via preload in index.html for better performance */
 
 /* CSS Variables for Professional Personal Website Theme */
 
@@ -84,6 +83,14 @@
   box-sizing: border-box;
 }
 
+/* Performance optimizations */
+* {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+}
+
 /* App Layout - Sticky Footer */
 .App {
   min-height: 100vh;
@@ -116,6 +123,8 @@ body {
   font-feature-settings: "liga" 1, "calt" 1; /* Enable ligatures for code fonts */
   -webkit-overflow-scrolling: touch;
   overscroll-behavior-y: contain;
+  scroll-behavior: smooth;
+  text-rendering: optimizeLegibility;
 }
 
 .container {
@@ -133,6 +142,8 @@ body {
   top: 0;
   z-index: 100;
   transition: background-color 0.3s ease, border-color 0.3s ease;
+  will-change: transform;
+  contain: layout style;
 }
 
 .header-content {
@@ -206,7 +217,9 @@ body {
 .blog-item {
   padding: var(--spacing-md) 0;
   border-bottom: 1px solid var(--border-color);
-  transition: all 0.2s ease;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+  will-change: transform;
+  contain: layout style;
 }
 
 .blog-item:hover {
@@ -372,7 +385,9 @@ body {
   border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid var(--border-color);
-  transition: all 0.2s ease;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  will-change: transform;
+  contain: layout style;
 }
 
 .project-card:hover {
@@ -661,7 +676,9 @@ body {
   max-height: 80vh;
   overflow: hidden;
   border: 1px solid var(--terminal-border);
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  will-change: transform;
+  contain: layout style;
 }
 
 .terminal-window.maximized {
@@ -1234,6 +1251,8 @@ body {
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 1000;
   animation: fadeIn 0.3s ease;
+  will-change: opacity;
+  contain: layout style;
 }
 
 .mobile-menu {
@@ -1251,6 +1270,8 @@ body {
   z-index: 1001;
   animation: slideInRight 0.3s ease;
   box-shadow: var(--shadow-lg);
+  will-change: transform;
+  contain: layout style;
 }
 
 .mobile-menu a {
@@ -1307,6 +1328,7 @@ body {
 .pull-to-refresh-container {
   position: relative;
   min-height: 100vh;
+  contain: layout style;
 }
 
 .pull-to-refresh-indicator {
@@ -1353,6 +1375,7 @@ body {
   border-top: 2px solid var(--accent-primary);
   border-radius: 50%;
   animation: spin 1s linear infinite;
+  will-change: transform;
 }
 
 .refresh-text {

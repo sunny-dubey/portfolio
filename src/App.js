@@ -1,17 +1,35 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from './components/Header';
-import BlogList from './components/BlogList';
-import BlogPost from './components/BlogPost';
-import Projects from './components/Projects';
-import About from './components/About';
-import Now from './components/Now';
-import Uses from './components/Uses';
-import Changelog from './components/Changelog';
-import Resources from './components/Resources';
 import Footer from './components/Footer';
 import PullToRefresh from './components/PullToRefresh';
 import './App.css';
+
+// Lazy load non-critical routes for better performance
+const BlogList = React.lazy(() => import('./components/BlogList'));
+const BlogPost = React.lazy(() => import('./components/BlogPost'));
+const Projects = React.lazy(() => import('./components/Projects'));
+const About = React.lazy(() => import('./components/About'));
+const Now = React.lazy(() => import('./components/Now'));
+const Uses = React.lazy(() => import('./components/Uses'));
+const Changelog = React.lazy(() => import('./components/Changelog'));
+const Resources = React.lazy(() => import('./components/Resources'));
+
+// Loading component for Suspense fallback
+const LoadingSpinner = () => (
+  <div className="container">
+    <div style={{ 
+      display: 'flex', 
+      justifyContent: 'center', 
+      alignItems: 'center', 
+      minHeight: '200px',
+      fontSize: 'var(--font-size-lg)',
+      color: 'var(--text-secondary)'
+    }}>
+      Loading...
+    </div>
+  </div>
+);
 
 function App() {
   const handleRefresh = async () => {
@@ -26,17 +44,19 @@ function App() {
         <Header />
         <main id="main-content" className="main-content">
           <PullToRefresh onRefresh={handleRefresh}>
-            <Routes>
-              <Route path="/" element={<BlogList />} />
-              <Route path="/blog" element={<BlogList />} />
-              <Route path="/post/:id" element={<BlogPost />} />
-              <Route path="/projects" element={<Projects />} />
-              <Route path="/uses" element={<Uses />} />
-              <Route path="/now" element={<Now />} />
-              <Route path="/changelog" element={<Changelog />} />
-              <Route path="/resources" element={<Resources />} />
-              <Route path="/about" element={<About />} />
-            </Routes>
+            <Suspense fallback={<LoadingSpinner />}>
+              <Routes>
+                <Route path="/" element={<BlogList />} />
+                <Route path="/blog" element={<BlogList />} />
+                <Route path="/post/:id" element={<BlogPost />} />
+                <Route path="/projects" element={<Projects />} />
+                <Route path="/uses" element={<Uses />} />
+                <Route path="/now" element={<Now />} />
+                <Route path="/changelog" element={<Changelog />} />
+                <Route path="/resources" element={<Resources />} />
+                <Route path="/about" element={<About />} />
+              </Routes>
+            </Suspense>
           </PullToRefresh>
         </main>
         <Footer />

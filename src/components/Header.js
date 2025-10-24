@@ -5,17 +5,22 @@ const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const mobileMenuRef = useRef(null);
 
-  // Close mobile menu when clicking outside
+  // Close mobile menu when clicking outside (debounced)
   useEffect(() => {
+    let timeoutId;
     const handleClickOutside = (event) => {
-      if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
-        setIsMobileMenuOpen(false);
-      }
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(() => {
+        if (mobileMenuRef.current && !mobileMenuRef.current.contains(event.target)) {
+          setIsMobileMenuOpen(false);
+        }
+      }, 10);
     };
 
     document.addEventListener('mousedown', handleClickOutside);
     return () => {
       document.removeEventListener('mousedown', handleClickOutside);
+      clearTimeout(timeoutId);
     };
   }, []);
 
@@ -39,7 +44,10 @@ const Header = () => {
   };
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
+    // Use requestAnimationFrame for smoother animation
+    requestAnimationFrame(() => {
+      setIsMobileMenuOpen(!isMobileMenuOpen);
+    });
   };
 
   return (

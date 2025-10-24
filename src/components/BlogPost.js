@@ -31,6 +31,10 @@ const BlogPost = () => {
           src={post.image} 
           alt={post.title}
           className="blog-post-image"
+          loading="lazy"
+          decoding="async"
+          width="1000"
+          height="300"
         />
         <div className="blog-post-content">
           <h1 className="blog-post-title">{post.title}</h1>
