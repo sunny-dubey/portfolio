@@ -1,4 +1,5 @@
 import React from 'react';
+import { trackResourceClick } from '../utils/analytics';
 
 const Resources = () => {
   // Resources data - easy to add new entries
@@ -35,6 +36,10 @@ const Resources = () => {
     misc: "Miscellaneous"
   };
 
+  const handleResourceClick = (resourceTitle) => {
+    trackResourceClick(resourceTitle);
+  };
+
   return (
     <div className="container">
       <div className="page-header">
@@ -65,6 +70,7 @@ const Resources = () => {
                         target="_blank" 
                         rel="noopener noreferrer"
                         className="resource-link"
+                        onClick={() => handleResourceClick(resource.title)}
                       >
                         {resource.title}
                       </a>

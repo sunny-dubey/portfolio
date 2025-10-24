@@ -1,8 +1,9 @@
-import React, { Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import React, { Suspense, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import PullToRefresh from './components/PullToRefresh';
+import { pageview } from './utils/analytics';
 import './App.css';
 
 // Lazy load non-critical routes for better performance
@@ -14,6 +15,17 @@ const Now = React.lazy(() => import('./components/Now'));
 const Uses = React.lazy(() => import('./components/Uses'));
 const Changelog = React.lazy(() => import('./components/Changelog'));
 const Resources = React.lazy(() => import('./components/Resources'));
+
+// Component to track page views
+const PageTracker = () => {
+  const location = useLocation();
+  
+  useEffect(() => {
+    pageview(location.pathname + location.search);
+  }, [location]);
+  
+  return null;
+};
 
 // Loading component for Suspense fallback
 const LoadingSpinner = () => (
@@ -41,6 +53,7 @@ function App() {
   return (
     <Router>
       <div className="App">
+        <PageTracker />
         <Header />
         <main id="main-content" className="main-content">
           <PullToRefresh onRefresh={handleRefresh}>
