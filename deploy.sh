@@ -13,6 +13,10 @@ rm -rf docs
 mkdir docs
 cp -r build/* docs/
 
+# Preserve CNAME file for custom domain
+echo "🌐 Setting up custom domain..."
+echo "sunnydubey.in" > docs/CNAME
+
 # Add and commit changes
 echo "💾 Committing changes..."
 git add docs/
@@ -23,5 +27,5 @@ echo "🌐 Pushing to GitHub..."
 git push origin main
 
 echo "✅ Deployment complete!"
-echo "🌍 Your site will be live at: https://sunny-dubey.github.io/portfolio/"
+echo "🌍 Your site will be live at: https://sunnydubey.in"
 echo "⏱️  It may take 2-3 minutes to update."
