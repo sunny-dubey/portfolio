@@ -14,7 +14,8 @@ const Header = () => {
       timeoutId = setTimeout(() => {
         if (
           mobileMenuRef.current &&
-          !mobileMenuRef.current.contains(event.target)
+          !mobileMenuRef.current.contains(event.target) &&
+          !event.target.closest('.mobile-menu-toggle')
         ) {
           setIsMobileMenuOpen(false);
         }
@@ -47,13 +48,6 @@ const Header = () => {
     setIsMobileMenuOpen(false);
   };
 
-  const toggleMobileMenu = () => {
-    // Use requestAnimationFrame for smoother animation
-    requestAnimationFrame(() => {
-      setIsMobileMenuOpen(!isMobileMenuOpen);
-    });
-  };
-
   return (
     <header className='header'>
       <a href='#main-content' className='skip-to-content'>
@@ -80,7 +74,9 @@ const Header = () => {
           {/* Mobile Hamburger Button */}
           <button
             className='mobile-menu-toggle'
-            onClick={toggleMobileMenu}
+            onClick={() => {
+              setIsMobileMenuOpen(!isMobileMenuOpen);
+            }}
             aria-expanded={isMobileMenuOpen}
             aria-label='Toggle mobile menu'
             aria-controls='mobile-menu'
