@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunkblog_site=self.webpackChunkblog_site||[]).push([[129],{129:(e,s,n)=>{n.r(s),n.d(s,{default:()=>i});n(43);var c=n(579);const i=()=>(0,c.jsx)("div",{className:"container",children:(0,c.jsxs)("div",{className:"live-soon",children:[(0,c.jsx)("h1",{children:"Live Soon"}),(0,c.jsx)("p",{children:"This page is under construction. Check back soon to see what I'm currently working on!"})]})})}}]);
+//# sourceMappingURL=129.6c258fa6.chunk.js.map
