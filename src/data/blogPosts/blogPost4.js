@@ -1,8 +1,9 @@
 export const blogPost4 = {
   id: 4,
-  title: "Event-Driven Architecture Patterns",
-  excerpt: "Designing systems that communicate through events for better scalability and loose coupling.",
-  date: "2024-01-01",
+  title: 'Event-Driven Architecture Patterns',
+  excerpt:
+    'Designing systems that communicate through events for better scalability and loose coupling.',
+  date: '2024-01-01',
   readTime: 5,
   content: `
     <p>Event-driven architecture (EDA) is a design pattern where components communicate through events rather than direct calls. This approach provides better scalability, loose coupling, and resilience in distributed systems.</p>
@@ -122,5 +123,5 @@ await consumer.run({
     </ul>
     
     <p>Event-driven architecture is powerful for building scalable, resilient systems. However, it requires careful design and consideration of consistency requirements and operational complexity.</p>
-  `
+  `,
 };

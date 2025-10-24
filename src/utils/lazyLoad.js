@@ -11,10 +11,10 @@ export const createLazyLoadObserver = (callback, options = {}) => {
     root: null,
     rootMargin: '50px',
     threshold: 0.1,
-    ...options
+    ...options,
   };
 
-  return new IntersectionObserver((entries) => {
+  const observer = new IntersectionObserver(entries => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         callback(entry.target);
@@ -22,6 +22,8 @@ export const createLazyLoadObserver = (callback, options = {}) => {
       }
     });
   }, defaultOptions);
+
+  return observer;
 };
 
 /**
@@ -53,11 +55,11 @@ export const debounce = (func, wait, immediate = false) => {
  */
 export const throttle = (func, limit) => {
   let inThrottle;
-  return function(...args) {
+  return function (...args) {
     if (!inThrottle) {
       func.apply(this, args);
       inThrottle = true;
-      setTimeout(() => inThrottle = false, limit);
+      setTimeout(() => (inThrottle = false), limit);
     }
   };
 };
@@ -67,7 +69,7 @@ export const throttle = (func, limit) => {
  * @param {Function} callback - Function to call on next frame
  * @returns {number} - Animation frame ID
  */
-export const requestAnimationFrame = (callback) => {
+export const requestAnimationFrame = callback => {
   return window.requestAnimationFrame(callback);
 };
 
@@ -75,7 +77,7 @@ export const requestAnimationFrame = (callback) => {
  * Cancel animation frame wrapper
  * @param {number} id - Animation frame ID to cancel
  */
-export const cancelAnimationFrame = (id) => {
+export const cancelAnimationFrame = id => {
   window.cancelAnimationFrame(id);
 };
 
@@ -84,7 +86,7 @@ export const cancelAnimationFrame = (id) => {
  * @param {string} src - Image source URL
  * @returns {Promise} - Promise that resolves when image is loaded
  */
-export const preloadImage = (src) => {
+export const preloadImage = src => {
   return new Promise((resolve, reject) => {
     const img = new Image();
     img.onload = () => resolve(img);
@@ -117,9 +119,10 @@ export const getDevicePixelRatio = () => {
  */
 export const isInViewport = (element, threshold = 0.1) => {
   const rect = element.getBoundingClientRect();
-  const windowHeight = window.innerHeight || document.documentElement.clientHeight;
+  const windowHeight =
+    window.innerHeight || document.documentElement.clientHeight;
   const windowWidth = window.innerWidth || document.documentElement.clientWidth;
-  
+
   return (
     rect.top <= windowHeight * (1 - threshold) &&
     rect.bottom >= windowHeight * threshold &&

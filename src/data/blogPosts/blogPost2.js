@@ -1,8 +1,9 @@
 export const blogPost2 = {
   id: 2,
-  title: "Building Scalable Microservices with Go",
-  excerpt: "Architecture decisions and trade-offs when designing microservices using Go programming language.",
-  date: "2024-01-10",
+  title: 'Building Scalable Microservices with Go',
+  excerpt:
+    'Architecture decisions and trade-offs when designing microservices using Go programming language.',
+  date: '2024-01-10',
   readTime: 6,
   content: `
     <p>Go has become a popular choice for building microservices due to its simplicity, performance, and excellent concurrency support. This post explores key architectural decisions when designing scalable microservices with Go.</p>
@@ -71,5 +72,5 @@ export const blogPost2 = {
     </ul>
     
     <p>Building scalable microservices with Go requires careful consideration of communication patterns, error handling, and deployment strategies. The language's simplicity and performance make it an excellent choice for modern distributed systems.</p>
-  `
+  `,
 };

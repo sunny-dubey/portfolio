@@ -1,8 +1,9 @@
 export const blogPost1 = {
   id: 1,
-  title: "State Management Patterns in Distributed Systems",
-  excerpt: "Exploring different approaches to managing state consistency across microservices and distributed architectures.",
-  date: "2024-01-15",
+  title: 'State Management Patterns in Distributed Systems',
+  excerpt:
+    'Exploring different approaches to managing state consistency across microservices and distributed architectures.',
+  date: '2024-01-15',
   readTime: 8,
   content: `
     <p>In distributed systems, maintaining state consistency across multiple services presents unique challenges. This post explores the fundamental patterns used to manage state in microservices architectures.</p>
@@ -58,5 +59,5 @@ export const blogPost1 = {
     </ul>
     
     <p>Each pattern has its place in distributed systems, and the choice depends on your specific requirements and constraints.</p>
-  `
+  `,
 };

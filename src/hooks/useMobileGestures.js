@@ -7,7 +7,7 @@ const useMobileGestures = (options = {}) => {
     onSwipeLeft = null,
     onSwipeRight = null,
     onPullToRefresh = null,
-    enabled = true
+    enabled = true,
   } = options;
 
   const [touchStart, setTouchStart] = useState(null);
@@ -15,7 +15,7 @@ const useMobileGestures = (options = {}) => {
   const [pullDistance, setPullDistance] = useState(0);
   const [isPulling, setIsPulling] = useState(false);
   const [isRefreshing, setIsRefreshing] = useState(false);
-  
+
   const elementRef = useRef(null);
   const lastTouchY = useRef(0);
   const isAtTop = useRef(false);
@@ -29,15 +29,15 @@ const useMobileGestures = (options = {}) => {
   };
 
   // Handle touch start
-  const handleTouchStart = (e) => {
+  const handleTouchStart = e => {
     if (!enabled) return;
-    
+
     checkIfAtTop();
     const touch = e.touches[0];
     setTouchStart({
       x: touch.clientX,
       y: touch.clientY,
-      time: Date.now()
+      time: Date.now(),
     });
     setTouchEnd(null);
     lastTouchY.current = touch.clientY;
@@ -46,11 +46,10 @@ const useMobileGestures = (options = {}) => {
   };
 
   // Handle touch move
-  const handleTouchMove = (e) => {
+  const handleTouchMove = e => {
     if (!enabled || !touchStart) return;
 
     const touch = e.touches[0];
-    const deltaX = touch.clientX - touchStart.x;
     const deltaY = touch.clientY - touchStart.y;
     const deltaTime = Date.now() - touchStart.time;
 
@@ -59,7 +58,7 @@ const useMobileGestures = (options = {}) => {
       setIsPulling(true);
       const distance = Math.min(deltaY * 0.5, pullToRefreshThreshold * 1.5);
       setPullDistance(distance);
-      
+
       // Only prevent default when we're actually doing pull-to-refresh
       if (distance >= pullToRefreshThreshold && !isRefreshing) {
         e.preventDefault();
@@ -69,16 +68,15 @@ const useMobileGestures = (options = {}) => {
     setTouchEnd({
       x: touch.clientX,
       y: touch.clientY,
-      time: Date.now()
+      time: Date.now(),
     });
   };
 
   // Handle touch end
-  const handleTouchEnd = (e) => {
+  const handleTouchEnd = e => {
     if (!enabled || !touchStart || !touchEnd) return;
 
     const deltaX = touchEnd.x - touchStart.x;
-    const deltaY = touchEnd.y - touchStart.y;
     const deltaTime = touchEnd.time - touchStart.time;
     const velocity = Math.abs(deltaX) / deltaTime;
 
@@ -110,10 +108,14 @@ const useMobileGestures = (options = {}) => {
   // Add event listeners
   useEffect(() => {
     const element = elementRef.current || document;
-    
+
     if (enabled) {
-      element.addEventListener('touchstart', handleTouchStart, { passive: true });
-      element.addEventListener('touchmove', handleTouchMove, { passive: false });
+      element.addEventListener('touchstart', handleTouchStart, {
+        passive: true,
+      });
+      element.addEventListener('touchmove', handleTouchMove, {
+        passive: false,
+      });
       element.addEventListener('touchend', handleTouchEnd, { passive: true });
     }
 
@@ -122,7 +124,16 @@ const useMobileGestures = (options = {}) => {
       element.removeEventListener('touchmove', handleTouchMove);
       element.removeEventListener('touchend', handleTouchEnd);
     };
-  }, [enabled, touchStart, touchEnd, pullDistance, isPulling]);
+  }, [
+    enabled,
+    touchStart,
+    touchEnd,
+    pullDistance,
+    isPulling,
+    handleTouchStart,
+    handleTouchMove,
+    handleTouchEnd,
+  ]);
 
   return {
     elementRef,
@@ -130,7 +141,7 @@ const useMobileGestures = (options = {}) => {
     isPulling,
     isRefreshing,
     swipeThreshold,
-    pullToRefreshThreshold
+    pullToRefreshThreshold,
   };
 };
 

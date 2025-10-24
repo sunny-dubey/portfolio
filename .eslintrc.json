@@ -1,0 +1,23 @@
+{
+  "extends": [
+    "react-app",
+    "react-app/jest",
+    "prettier"
+  ],
+  "plugins": [
+    "prettier"
+  ],
+  "rules": {
+    "prettier/prettier": "error",
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn",
+    "react/prop-types": "off",
+    "no-unused-vars": "warn",
+    "no-console": "warn"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    }
+  }
+}

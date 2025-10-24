@@ -2,7 +2,7 @@
 export const GA_TRACKING_ID = 'G-S1DT9FZJ6F';
 
 // Track page views
-export const pageview = (url) => {
+export const pageview = url => {
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('config', GA_TRACKING_ID, {
       page_path: url,
@@ -22,7 +22,7 @@ export const event = ({ action, category, label, value }) => {
 };
 
 // Track specific events
-export const trackProjectClick = (projectName) => {
+export const trackProjectClick = projectName => {
   event({
     action: 'click',
     category: 'Projects',
@@ -30,7 +30,7 @@ export const trackProjectClick = (projectName) => {
   });
 };
 
-export const trackBlogPostView = (postTitle) => {
+export const trackBlogPostView = postTitle => {
   event({
     action: 'view',
     category: 'Blog',
@@ -38,7 +38,7 @@ export const trackBlogPostView = (postTitle) => {
   });
 };
 
-export const trackResourceClick = (resourceName) => {
+export const trackResourceClick = resourceName => {
   event({
     action: 'click',
     category: 'Resources',

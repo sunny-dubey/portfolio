@@ -63,7 +63,7 @@ const terminalContent = [
   '→ Database Sharding Strategies',
   '  Horizontal scaling approaches for PostgreSQL',
   '',
-  'sunny@portfolio:~$ _'
+  'sunny@portfolio:~$ _',
 ];
 
 const Terminal = () => {
@@ -90,7 +90,7 @@ const Terminal = () => {
 
   // Add Escape key support
   useEffect(() => {
-    const handleKeyDown = (event) => {
+    const handleKeyDown = event => {
       if (event.key === 'Escape' && isOpen) {
         setIsOpen(false);
         setCurrentLine(0);
@@ -139,30 +139,64 @@ const Terminal = () => {
   return (
     <>
       {/* Terminal Icon */}
-      <div className="terminal-icon" onClick={handleTerminalClick}>
-        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect x="2" y="4" width="20" height="16" rx="2" stroke="currentColor" strokeWidth="2"/>
-          <path d="M6 8L10 12L6 16" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-          <path d="M14 16H18" stroke="currentColor" strokeWidth="2" strokeLinecap="round"/>
+      <div className='terminal-icon' onClick={handleTerminalClick}>
+        <svg
+          width='24'
+          height='24'
+          viewBox='0 0 24 24'
+          fill='none'
+          xmlns='http://www.w3.org/2000/svg'
+        >
+          <rect
+            x='2'
+            y='4'
+            width='20'
+            height='16'
+            rx='2'
+            stroke='currentColor'
+            strokeWidth='2'
+          />
+          <path
+            d='M6 8L10 12L6 16'
+            stroke='currentColor'
+            strokeWidth='2'
+            strokeLinecap='round'
+            strokeLinejoin='round'
+          />
+          <path
+            d='M14 16H18'
+            stroke='currentColor'
+            strokeWidth='2'
+            strokeLinecap='round'
+          />
         </svg>
       </div>
 
       {/* Terminal Popup */}
       {isOpen && (
-        <div className="terminal-overlay" onClick={handleTerminalClick}>
-          <div className="terminal-window" onClick={(e) => e.stopPropagation()}>
-            <div className="terminal-header">
-              <div className="terminal-controls">
-                <div className="terminal-control close" onClick={handleCloseTerminal}></div>
-                <div className="terminal-control minimize" onClick={handleMinimizeTerminal}></div>
-                <div className="terminal-control maximize" onClick={handleMaximizeTerminal}></div>
+        <div className='terminal-overlay' onClick={handleTerminalClick}>
+          <div className='terminal-window' onClick={e => e.stopPropagation()}>
+            <div className='terminal-header'>
+              <div className='terminal-controls'>
+                <div
+                  className='terminal-control close'
+                  onClick={handleCloseTerminal}
+                ></div>
+                <div
+                  className='terminal-control minimize'
+                  onClick={handleMinimizeTerminal}
+                ></div>
+                <div
+                  className='terminal-control maximize'
+                  onClick={handleMaximizeTerminal}
+                ></div>
               </div>
-              <div className="terminal-title">terminal</div>
+              <div className='terminal-title'>terminal</div>
             </div>
-            <div className="terminal-body">
-              <pre className="terminal-content">
+            <div className='terminal-body'>
+              <pre className='terminal-content'>
                 {displayedText}
-                <span className="terminal-cursor">█</span>
+                <span className='terminal-cursor'>█</span>
               </pre>
             </div>
           </div>

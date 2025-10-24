@@ -1,8 +1,9 @@
 export const blogPost3 = {
   id: 3,
-  title: "Database Sharding Strategies",
-  excerpt: "Horizontal scaling approaches for PostgreSQL and other relational databases.",
-  date: "2024-01-05",
+  title: 'Database Sharding Strategies',
+  excerpt:
+    'Horizontal scaling approaches for PostgreSQL and other relational databases.',
+  date: '2024-01-05',
   readTime: 7,
   content: `
     <p>As applications grow, database performance becomes a bottleneck. Sharding is a technique to horizontally partition data across multiple database instances. This post explores different sharding strategies and their trade-offs.</p>
@@ -104,5 +105,5 @@ SELECT * FROM users WHERE user_id = 123;</code></pre>
     </ul>
     
     <p>Database sharding is a powerful technique for scaling applications, but it comes with significant complexity. Carefully evaluate your requirements and consider alternatives like read replicas or caching before implementing sharding.</p>
-  `
+  `,
 };

@@ -1,5 +1,10 @@
 import React, { Suspense, useEffect } from 'react';
-import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  useLocation,
+} from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import PullToRefresh from './components/PullToRefresh';
@@ -19,25 +24,27 @@ const Resources = React.lazy(() => import('./components/Resources'));
 // Component to track page views
 const PageTracker = () => {
   const location = useLocation();
-  
+
   useEffect(() => {
     pageview(location.pathname + location.search);
   }, [location]);
-  
+
   return null;
 };
 
 // Loading component for Suspense fallback
 const LoadingSpinner = () => (
-  <div className="container">
-    <div style={{ 
-      display: 'flex', 
-      justifyContent: 'center', 
-      alignItems: 'center', 
-      minHeight: '200px',
-      fontSize: 'var(--font-size-lg)',
-      color: 'var(--text-secondary)'
-    }}>
+  <div className='container'>
+    <div
+      style={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '200px',
+        fontSize: 'var(--font-size-lg)',
+        color: 'var(--text-secondary)',
+      }}
+    >
       Loading...
     </div>
   </div>
@@ -52,22 +59,22 @@ function App() {
 
   return (
     <Router>
-      <div className="App">
+      <div className='App'>
         <PageTracker />
         <Header />
-        <main id="main-content" className="main-content">
+        <main id='main-content' className='main-content'>
           <PullToRefresh onRefresh={handleRefresh}>
             <Suspense fallback={<LoadingSpinner />}>
               <Routes>
-                <Route path="/" element={<BlogList />} />
-                <Route path="/blog" element={<BlogList />} />
-                <Route path="/post/:id" element={<BlogPost />} />
-                <Route path="/projects" element={<Projects />} />
-                <Route path="/uses" element={<Uses />} />
-                <Route path="/now" element={<Now />} />
-                <Route path="/changelog" element={<Changelog />} />
-                <Route path="/resources" element={<Resources />} />
-                <Route path="/about" element={<About />} />
+                <Route path='/' element={<BlogList />} />
+                <Route path='/blog' element={<BlogList />} />
+                <Route path='/post/:id' element={<BlogPost />} />
+                <Route path='/projects' element={<Projects />} />
+                <Route path='/uses' element={<Uses />} />
+                <Route path='/now' element={<Now />} />
+                <Route path='/changelog' element={<Changelog />} />
+                <Route path='/resources' element={<Resources />} />
+                <Route path='/about' element={<About />} />
               </Routes>
             </Suspense>
           </PullToRefresh>

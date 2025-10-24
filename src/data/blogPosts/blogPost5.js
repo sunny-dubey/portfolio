@@ -1,8 +1,9 @@
 export const blogPost5 = {
   id: 5,
-  title: "API Design Best Practices",
-  excerpt: "Creating RESTful APIs that are intuitive, maintainable, and developer-friendly.",
-  date: "2023-12-28",
+  title: 'API Design Best Practices',
+  excerpt:
+    'Creating RESTful APIs that are intuitive, maintainable, and developer-friendly.',
+  date: '2023-12-28',
   readTime: 6,
   content: `
     <p>Well-designed APIs are crucial for building successful applications. This post covers essential best practices for creating RESTful APIs that are intuitive, maintainable, and developer-friendly.</p>
@@ -179,5 +180,5 @@ paths:
     </ul>
     
     <p>Good API design is essential for building successful applications. Focus on consistency, clarity, and developer experience to create APIs that are both powerful and easy to use.</p>
-  `
+  `,
 };
