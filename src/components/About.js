@@ -263,20 +263,20 @@ const About = () => {
                 </div>
                 <div className='tool-item'>
                   <div className='tool-icon'>
+                    <img src='/icons/newrelic.svg' alt='New Relic' />
+                  </div>
+                  <div className='tool-content'>
+                    <span className='tool-name'>New Relic</span>
+                    <span className='tool-description'>APM & monitoring</span>
+                  </div>
+                </div>
+                <div className='tool-item'>
+                  <div className='tool-icon'>
                     <img src='/icons/postman.svg' alt='Postman' />
                   </div>
                   <div className='tool-content'>
                     <span className='tool-name'>Postman</span>
                     <span className='tool-description'>API testing</span>
-                  </div>
-                </div>
-                <div className='tool-item'>
-                  <div className='tool-icon'>
-                    <img src='/icons/slack.svg' alt='Slack' />
-                  </div>
-                  <div className='tool-content'>
-                    <span className='tool-name'>Slack</span>
-                    <span className='tool-description'>Team communication</span>
                   </div>
                 </div>
                 <div className='tool-item'>
@@ -297,41 +297,157 @@ const About = () => {
 
         {/* About Sections */}
         <div className='about-sections'>
-          {/* About Me */}
+          {/* What I Solve */}
           <div className='about-section'>
-            <h2>My Journey</h2>
-            <p>
-              I'm a passionate backend engineer who recently graduated with a
-              Computer Science degree from IIIT Nagpur (2020-2024). What started
-              as curiosity about how websites work has evolved into a career
-              focused on building robust, scalable systems that handle
-              real-world challenges.
-            </p>
-            <p>
-              My expertise spans Python, Django, and Go, with a strong focus on
-              API design, database optimization, and system architecture. I
-              enjoy the puzzle-solving aspect of backend development - whether
-              it's designing efficient database schemas, debugging performance
-              bottlenecks, or architecting microservices.
-            </p>
+            <h2>What I Solve</h2>
+            <div className='solutions-grid'>
+              <div className='solution-item'>
+                <div className='solution-icon'>
+                  <svg
+                    width='20'
+                    height='20'
+                    viewBox='0 0 24 24'
+                    fill='none'
+                    stroke='currentColor'
+                    strokeWidth='2'
+                  >
+                    <rect x='3' y='3' width='7' height='7' />
+                    <rect x='14' y='3' width='7' height='7' />
+                    <rect x='14' y='14' width='7' height='7' />
+                    <rect x='3' y='14' width='7' height='7' />
+                  </svg>
+                </div>
+                <div className='solution-content'>
+                  <h3>Backend Architecture</h3>
+                  <p>
+                    Scalable and resilient backend systems designed for high
+                    availability and fault tolerance
+                  </p>
+                </div>
+              </div>
+              <div className='solution-item'>
+                <div className='solution-icon'>
+                  <svg
+                    width='20'
+                    height='20'
+                    viewBox='0 0 24 24'
+                    fill='none'
+                    stroke='currentColor'
+                    strokeWidth='2'
+                  >
+                    <path d='M13 2L3 14h9l-1 8 10-12h-9l1-8z' />
+                  </svg>
+                </div>
+                <div className='solution-content'>
+                  <h3>API Scalability</h3>
+                  <p>
+                    RESTful and microservice APIs optimized for high throughput,
+                    low latency, and smooth integrations
+                  </p>
+                </div>
+              </div>
+              <div className='solution-item'>
+                <div className='solution-icon'>
+                  <svg
+                    width='20'
+                    height='20'
+                    viewBox='0 0 24 24'
+                    fill='none'
+                    stroke='currentColor'
+                    strokeWidth='2'
+                  >
+                    <circle cx='12' cy='12' r='3' />
+                    <path d='M12 1v6m0 6v6m11-7h-6m-6 0H1' />
+                  </svg>
+                </div>
+                <div className='solution-content'>
+                  <h3>System Performance</h3>
+                  <p>
+                    Profiling and tuning compute, memory, and I/O layers to
+                    remove bottlenecks and enhance efficiency
+                  </p>
+                </div>
+              </div>
+              <div className='solution-item'>
+                <div className='solution-icon'>
+                  <svg
+                    width='20'
+                    height='20'
+                    viewBox='0 0 24 24'
+                    fill='none'
+                    stroke='currentColor'
+                    strokeWidth='2'
+                  >
+                    <ellipse cx='12' cy='5' rx='9' ry='3' />
+                    <path d='M3 5v14c0 1.66 4.03 3 9 3s9-1.34 9-3V5' />
+                    <path d='M3 12c0 1.66 4.03 3 9 3s9-1.34 9-3' />
+                  </svg>
+                </div>
+                <div className='solution-content'>
+                  <h3>Database Optimization</h3>
+                  <p>
+                    Efficient schema design, indexing, and query optimization
+                    for reliable and fast data access
+                  </p>
+                </div>
+              </div>
+              <div className='solution-item'>
+                <div className='solution-icon'>
+                  <svg
+                    width='20'
+                    height='20'
+                    viewBox='0 0 24 24'
+                    fill='none'
+                    stroke='currentColor'
+                    strokeWidth='2'
+                  >
+                    <path d='M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6' />
+                  </svg>
+                </div>
+                <div className='solution-content'>
+                  <h3>Latency & Throughput</h3>
+                  <p>
+                    End-to-end performance improvements through caching,
+                    asynchronous execution, and optimized data pipelines
+                  </p>
+                </div>
+              </div>
+              <div className='solution-item'>
+                <div className='solution-icon'>
+                  <svg
+                    width='20'
+                    height='20'
+                    viewBox='0 0 24 24'
+                    fill='none'
+                    stroke='currentColor'
+                    strokeWidth='2'
+                  >
+                    <path d='M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z' />
+                  </svg>
+                </div>
+                <div className='solution-content'>
+                  <h3>System Reliability</h3>
+                  <p>
+                    Monitoring, observability, and failover mechanisms ensuring
+                    consistent uptime and stable operations
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
 
-          {/* Current Focus */}
+          {/* Beyond Code */}
           <div className='about-section'>
-            <h2>Current Focus</h2>
+            <h2>Beyond Code</h2>
             <p>
-              At my current startup, I'm leading backend development for a
-              platform that serves thousands of users daily. My work involves
-              designing RESTful APIs, optimizing database performance, and
-              ensuring system reliability through robust monitoring and error
-              handling.
+              When I'm not working, you'll probably find me yapping with
+              friends, watching movies, or catching up on the latest news. I
+              also enjoy experimenting with random side projects and diving into
+              interesting tech or science reads.
             </p>
             <p>
-              I'm continuously exploring new technologies and best practices in
-              backend development. Currently diving deeper into distributed
-              systems, containerization with Docker, and implementing
-              comprehensive testing strategies to build more resilient
-              applications.
+              Lately, I've been trying to spend more time offline — which mostly
+              means sleeping to reduce screen time.
             </p>
           </div>
         </div>
