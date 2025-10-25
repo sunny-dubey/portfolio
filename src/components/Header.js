@@ -118,6 +118,37 @@ const Header = () => {
               <Link to='/resources' onClick={handleLinkClick}>
                 resources
               </Link>
+              <div className='mobile-menu-divider'></div>
+              <a
+                href='https://github.com/sunny-dubey'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='mobile-menu-link'
+              >
+                GitHub
+              </a>
+              <a
+                href='https://www.linkedin.com/in/sunny-dubey-5018ab267/'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='mobile-menu-link'
+              >
+                LinkedIn
+              </a>
+              <a
+                href='mailto:sunnydub2502@gmail.com'
+                className='mobile-menu-link'
+              >
+                Email
+              </a>
+              <a
+                href='/resume.pdf'
+                target='_blank'
+                rel='noopener noreferrer'
+                className='mobile-menu-link'
+              >
+                Resume
+              </a>
               <div className='mobile-theme-toggle'>
                 <ThemeToggle />
               </div>
