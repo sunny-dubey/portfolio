@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128">
+  <defs>
+    <linearGradient id="tableplus-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#007AFF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#5856D6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Background circle -->
+  <circle cx="64" cy="64" r="60" fill="url(#tableplus-gradient)" stroke="#fff" stroke-width="2"/>
+  
+  <!-- Table icon -->
+  <rect x="40" y="50" width="48" height="28" rx="2" fill="#fff" opacity="0.9"/>
+  <rect x="44" y="54" width="8" height="2" fill="#007AFF"/>
+  <rect x="44" y="58" width="12" height="2" fill="#007AFF"/>
+  <rect x="44" y="62" width="16" height="2" fill="#007AFF"/>
+  <rect x="44" y="66" width="10" height="2" fill="#007AFF"/>
+  <rect x="44" y="70" width="14" height="2" fill="#007AFF"/>
+  
+  <!-- Plus icon -->
+  <rect x="58" y="30" width="12" height="4" rx="2" fill="#fff"/>
+  <rect x="62" y="26" width="4" height="12" rx="2" fill="#fff"/>
+</svg>

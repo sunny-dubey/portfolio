@@ -4,6 +4,16 @@ const Changelog = () => {
   // Changelog data - easy to add new entries
   const changelogEntries = [
     {
+      date: 'Oct 25, 2024',
+      version: '1.6.0',
+      title: 'Performance Optimization Update',
+      changes: [
+        'google analytics now loads after page render',
+        'devicon logos are now served locally ',
+        'added a LazyImage component',
+      ],
+    },
+    {
       date: 'Oct 24, 2025',
       version: '1.4.0',
       title: 'Google Analytics is in, code is cleaner, and hello dark mode',

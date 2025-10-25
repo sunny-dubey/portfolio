@@ -359,7 +359,9 @@ body {
   padding: var(--spacing-sm);
   margin: var(--spacing-sm) 0;
   overflow-x: auto;
-  font-family: 'JetBrains Mono', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-family:
+    'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro',
+    'JetBrains Mono', 'Fira Code', monospace;
   font-size: var(--font-size-sm);
   line-height: 1.5;
 }
@@ -368,7 +370,9 @@ body {
   background: var(--code-bg);
   padding: 2px var(--spacing-xs);
   border-radius: var(--radius-sm);
-  font-family: 'JetBrains Mono', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-family:
+    'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro',
+    'JetBrains Mono', 'Fira Code', monospace;
   font-size: var(--font-size-sm);
   color: var(--text-color);
   border: 1px solid var(--code-border);
@@ -910,7 +914,9 @@ body {
 
 .terminal-content {
   color: var(--terminal-text);
-  font-family: 'JetBrains Mono', 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+  font-family:
+    'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro',
+    'JetBrains Mono', 'Fira Code', monospace;
   font-size: var(--font-size-sm);
   line-height: 1.5;
   margin: 0;

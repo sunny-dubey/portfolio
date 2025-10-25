@@ -127,10 +127,7 @@ const About = () => {
               <div className='tech-stack-list'>
                 <div className='tech-item'>
                   <div className='tech-icon'>
-                    <img
-                      src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/django/django-plain.svg'
-                      alt='Django'
-                    />
+                    <img src='/icons/django.svg' alt='Django' />
                   </div>
                   <div className='tech-content'>
                     <span className='tech-name'>Django</span>
@@ -139,10 +136,7 @@ const About = () => {
                 </div>
                 <div className='tech-item'>
                   <div className='tech-icon'>
-                    <img
-                      src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg'
-                      alt='Python'
-                    />
+                    <img src='/icons/python.svg' alt='Python' />
                   </div>
                   <div className='tech-content'>
                     <span className='tech-name'>Python</span>
@@ -151,10 +145,7 @@ const About = () => {
                 </div>
                 <div className='tech-item'>
                   <div className='tech-icon'>
-                    <img
-                      src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postgresql/postgresql-original.svg'
-                      alt='PostgreSQL'
-                    />
+                    <img src='/icons/postgresql.svg' alt='PostgreSQL' />
                   </div>
                   <div className='tech-content'>
                     <span className='tech-name'>PostgreSQL</span>
@@ -163,10 +154,7 @@ const About = () => {
                 </div>
                 <div className='tech-item'>
                   <div className='tech-icon'>
-                    <img
-                      src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg'
-                      alt='Golang'
-                    />
+                    <img src='/icons/go.svg' alt='Golang' />
                   </div>
                   <div className='tech-content'>
                     <span className='tech-name'>Golang</span>
@@ -248,10 +236,7 @@ const About = () => {
                 </div>
                 <div className='tool-item'>
                   <div className='tool-icon'>
-                    <img
-                      src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg'
-                      alt='GitHub'
-                    />
+                    <img src='/icons/github.svg' alt='GitHub' />
                   </div>
                   <div className='tool-content'>
                     <span className='tool-name'>GitHub</span>
@@ -260,10 +245,7 @@ const About = () => {
                 </div>
                 <div className='tool-item'>
                   <div className='tool-icon'>
-                    <img
-                      src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/amazonwebservices/amazonwebservices-original-wordmark.svg'
-                      alt='AWS'
-                    />
+                    <img src='/icons/amazonwebservices.svg' alt='AWS' />
                   </div>
                   <div className='tool-content'>
                     <span className='tool-name'>AWS</span>
@@ -272,10 +254,7 @@ const About = () => {
                 </div>
                 <div className='tool-item'>
                   <div className='tool-icon'>
-                    <img
-                      src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/googlecloud/googlecloud-original.svg'
-                      alt='GCP'
-                    />
+                    <img src='/icons/googlecloud.svg' alt='GCP' />
                   </div>
                   <div className='tool-content'>
                     <span className='tool-name'>GCP</span>
@@ -284,10 +263,7 @@ const About = () => {
                 </div>
                 <div className='tool-item'>
                   <div className='tool-icon'>
-                    <img
-                      src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/postman/postman-original.svg'
-                      alt='Postman'
-                    />
+                    <img src='/icons/postman.svg' alt='Postman' />
                   </div>
                   <div className='tool-content'>
                     <span className='tool-name'>Postman</span>
@@ -296,10 +272,7 @@ const About = () => {
                 </div>
                 <div className='tool-item'>
                   <div className='tool-icon'>
-                    <img
-                      src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/slack/slack-original.svg'
-                      alt='Slack'
-                    />
+                    <img src='/icons/slack.svg' alt='Slack' />
                   </div>
                   <div className='tool-content'>
                     <span className='tool-name'>Slack</span>
@@ -308,14 +281,13 @@ const About = () => {
                 </div>
                 <div className='tool-item'>
                   <div className='tool-icon'>
-                    <img
-                      src='https://cdn.jsdelivr.net/gh/devicons/devicon/icons/google/google-original.svg'
-                      alt='Gmail'
-                    />
+                    <img src='/icons/tableplus.png' alt='TablePlus' />
                   </div>
                   <div className='tool-content'>
-                    <span className='tool-name'>Gmail</span>
-                    <span className='tool-description'>Email</span>
+                    <span className='tool-name'>TablePlus</span>
+                    <span className='tool-description'>
+                      Database management
+                    </span>
                   </div>
                 </div>
               </div>
