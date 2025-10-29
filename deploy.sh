@@ -13,6 +13,14 @@ rm -rf docs
 mkdir docs
 cp -r build/* docs/
 
+# Copy 404.html to docs for GitHub Pages routing
+echo "📄 Setting up 404.html for SPA routing..."
+cp public/404.html docs/404.html
+
+# Add .nojekyll to prevent Jekyll processing
+echo "📄 Adding .nojekyll file..."
+touch docs/.nojekyll
+
 # Preserve CNAME file for custom domain
 echo "🌐 Setting up custom domain..."
 echo "sunnydubey.in" > docs/CNAME

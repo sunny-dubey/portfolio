@@ -39,13 +39,22 @@
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <script type="text/javascript">
-      (function() {
-        var redirect = sessionStorage.getItem('redirectPath');
-        sessionStorage.removeItem('redirectPath');
-        if (redirect && redirect !== '/') {
-          history.replaceState(null, null, redirect);
+      // Single Page Apps for GitHub Pages
+      // https://github.com/rafgraph/spa-github-pages
+      // This MUST run before React initializes
+      (function(l) {
+        if (l.search[1] === '/' ) {
+          var decoded = l.search.slice(1).split('&').map(function(s) { 
+            return s.replace(/~and~/g, '&')
+          }).join('?');
+          var newPath = decoded;
+          // Ensure leading slash
+          if (newPath.charAt(0) !== '/') {
+            newPath = '/' + newPath;
+          }
+          window.history.replaceState(null, null, newPath + l.hash);
         }
-      })();
+      }(window.location))
     </script>
     <div id="root"></div>
   </body>
