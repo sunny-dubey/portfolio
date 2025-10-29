@@ -2,6 +2,13 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { blogPosts } from '../data/blogPosts';
 
+const formatDateToMonthYear = dateString => {
+  const date = new Date(dateString + 'T00:00:00'); // Add time to avoid timezone issues
+  const month = date.toLocaleDateString('en-US', { month: 'short' });
+  const year = date.getFullYear();
+  return `${month} ${year}`;
+};
+
 const BlogList = () => {
   return (
     <div className='container'>
@@ -26,7 +33,9 @@ const BlogList = () => {
             <article key={post.id} className='blog-item'>
               <div className='blog-item-content'>
                 <div className='blog-item-header'>
-                  <div className='blog-item-date'>{post.date}</div>
+                  <div className='blog-item-date'>
+                    {formatDateToMonthYear(post.date)}
+                  </div>
                   <h2 className='blog-item-title'>
                     <Link
                       to={`/post/${post.date}/${post.slug}`}

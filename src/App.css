@@ -283,6 +283,7 @@ body {
   font-weight: 400;
   white-space: nowrap;
   line-height: 1.3;
+  flex-shrink: 0;
 }
 
 /* Blog Post Styles - nginx.org style */
@@ -1985,7 +1986,8 @@ body {
   }
 
   .blog-item-date {
-    margin-top: var(--spacing-xs);
+    margin-top: 0;
+    margin-bottom: var(--spacing-xs);
   }
 
   .blog-item:hover {

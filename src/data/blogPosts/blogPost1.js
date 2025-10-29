@@ -6,7 +6,7 @@ export const blogPost1 = {
   content: `
     <p>As of today, there’s probably nothing as good as Cursor IDE where you do some prompting and within few minutes, you have a production-ready website. Folks, <a href="https://cloud.google.com/discover/what-is-vibe-coding" target="_blank">vibe coding</a> is real.</p>
 
-    <p>Tab completion plays with your subconscious mind and you will eventually be depended on it. No Medium-style tips and tricks shall be provided from my end. All you need to know is that it has three modes: Agent mode, Plan (or Planning) mode, and Ask mode.</p>
+    <p><a href="https://cursor.com/docs/tab/overview" target="_blank">Tab completion</a> plays with your subconscious mind and you will eventually be depended on it. No Medium-style tips and tricks shall be provided from my end. All you need to know is that it has three modes: Agent mode, Plan (or Planning) mode, and Ask mode.</p>
 
     <p>So how do you use cursor to its full potential? Start with Ask Mode to understand the issue and get some clarity. Once you understood the problem, switch to Plan Mode to map out how to solve it based on insights from Ask Mode. Finally, let Agent Mode do the heavy lifting. That’s it. It works for me, and it’ll work for you too.</p>
 
