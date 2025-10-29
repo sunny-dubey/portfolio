@@ -17,6 +17,18 @@ const Resources = () => {
         'community-driven tech news and discussions from developers, entrepreneurs, and tech enthusiasts',
       category: 'websites',
     },
+    {
+      title: 'ngrok',
+      url: 'https://ngrok.com/',
+      description: 'secure tunnels to localhost for development and testing',
+      category: 'tools',
+    },
+    {
+      title: 'US Debt Clock',
+      url: 'https://www.usdebtclock.org/',
+      description: 'real-time visualization of the US national debt',
+      category: 'websites',
+    },
   ];
 
   // Group resources by category

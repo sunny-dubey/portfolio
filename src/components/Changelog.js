@@ -4,6 +4,12 @@ const Changelog = () => {
   // Changelog data - easy to add new entries
   const changelogEntries = [
     {
+      date: 'Oct 29, 2024',
+      version: '1.7.0',
+      title: 'Blog Section is Live',
+      changes: ['the website is good enough for blogs now'],
+    },
+    {
       date: 'Oct 25, 2024',
       version: '1.6.0',
       title: 'Performance Optimization Update',

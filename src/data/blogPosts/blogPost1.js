@@ -1,63 +1,19 @@
 export const blogPost1 = {
   id: 1,
-  title: 'State Management Patterns in Distributed Systems',
-  excerpt:
-    'Exploring different approaches to managing state consistency across microservices and distributed architectures.',
-  date: '2024-01-15',
-  readTime: 8,
+  title: 'Cursor gave birth to this site',
+  date: '2025-10-29',
+  slug: 'cursor-is-cool',
   content: `
-    <p>In distributed systems, maintaining state consistency across multiple services presents unique challenges. This post explores the fundamental patterns used to manage state in microservices architectures.</p>
+    <p>As of today, there’s probably nothing as good as Cursor IDE where you do some prompting and within few minutes, you have a production-ready website. Folks, <a href="https://cloud.google.com/discover/what-is-vibe-coding" target="_blank">vibe coding</a> is real.</p>
+
+    <p>Tab completion plays with your subconscious mind and you will eventually be depended on it. No Medium-style tips and tricks shall be provided from my end. All you need to know is that it has three modes: Agent mode, Plan (or Planning) mode, and Ask mode.</p>
+
+    <p>So how do you use cursor to its full potential? Start with Ask Mode to understand the issue and get some clarity. Once you understood the problem, switch to Plan Mode to map out how to solve it based on insights from Ask Mode. Finally, let Agent Mode do the heavy lifting. That’s it. It works for me, and it’ll work for you too.</p>
+
+    <p>This AI-wrapper tool actually delivers real value. I know people who are willing to pay for it out of their own pocket if their company doesn’t provide the organization plan. That’s how good it is.</p>
     
-    <h2>Event Sourcing Pattern</h2>
-    <p>Event sourcing stores the state of an application as a sequence of events. Instead of storing the current state, we store all events that led to that state. This pattern provides several benefits:</p>
-    
-    <ul>
-      <li>Complete audit trail of all changes</li>
-      <li>Ability to replay events to reconstruct state</li>
-      <li>Natural fit for event-driven architectures</li>
-      <li>Easier debugging and troubleshooting</li>
-    </ul>
-    
-    <h2>CQRS (Command Query Responsibility Segregation)</h2>
-    <p>CQRS separates read and write operations into different models. Commands modify state, while queries read state. This separation allows for:</p>
-    
-    <ul>
-      <li>Optimized read and write models</li>
-      <li>Independent scaling of read and write operations</li>
-      <li>Different data structures for different use cases</li>
-      <li>Better performance for complex queries</li>
-    </ul>
-    
-    <h2>Saga Pattern</h2>
-    <p>The Saga pattern manages distributed transactions by breaking them into a series of local transactions. Each local transaction has a compensating transaction that can undo its effects.</p>
-    
-    <h3>Choreography vs Orchestration</h3>
-    <p>There are two main approaches to implementing sagas:</p>
-    
-    <ul>
-      <li><strong>Choreography:</strong> Each service knows what to do next and publishes events</li>
-      <li><strong>Orchestration:</strong> A central coordinator manages the entire process</li>
-    </ul>
-    
-    <h2>Consistency Models</h2>
-    <p>Different consistency models provide different guarantees:</p>
-    
-    <ul>
-      <li><strong>Strong Consistency:</strong> All nodes see the same data simultaneously</li>
-      <li><strong>Eventual Consistency:</strong> All nodes will eventually converge to the same state</li>
-      <li><strong>Weak Consistency:</strong> No guarantees about when consistency will be achieved</li>
-    </ul>
-    
-    <h2>Implementation Considerations</h2>
-    <p>When implementing state management patterns, consider:</p>
-    
-    <ul>
-      <li>Performance requirements</li>
-      <li>Consistency needs</li>
-      <li>Complexity vs. benefits trade-offs</li>
-      <li>Team expertise and maintenance overhead</li>
-    </ul>
-    
-    <p>Each pattern has its place in distributed systems, and the choice depends on your specific requirements and constraints.</p>
+    <p>I've never cared to follow software updates as closely as I do with cursor. Rumor on twitter says they're about to launch version 2.0.</p>
+
+    <p>Highly recommended! </p>
   `,
 };

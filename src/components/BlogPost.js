@@ -1,10 +1,12 @@
 import React from 'react';
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useLocation } from 'react-router-dom';
 import { blogPosts } from '../data/blogPosts';
+import BlogShare from './BlogShare';
 
 const BlogPost = () => {
-  const { id } = useParams();
-  const post = blogPosts.find(p => p.id === parseInt(id));
+  const { date, slug } = useParams();
+  const location = useLocation();
+  const post = blogPosts.find(p => p.date === date && p.slug === slug);
 
   if (!post) {
     return (
@@ -25,28 +27,28 @@ const BlogPost = () => {
   return (
     <div className='container'>
       <article className='blog-post'>
-        <img
-          src={post.image}
-          alt={post.title}
-          className='blog-post-image'
-          loading='lazy'
-          decoding='async'
-          width='1000'
-          height='300'
-        />
+        {post.image && (
+          <img
+            src={post.image}
+            alt={post.title}
+            className='blog-post-image'
+            loading='lazy'
+            decoding='async'
+            width='1000'
+            height='300'
+          />
+        )}
         <div className='blog-post-content'>
           <h1 className='blog-post-title'>{post.title}</h1>
-          <div className='blog-post-meta'>
-            <span>{post.date}</span>
-            <span>{post.readTime} min read</span>
-          </div>
+          <div className='blog-post-date'>{post.date}</div>
           <div
             className='blog-post-body'
             dangerouslySetInnerHTML={{ __html: post.content }}
           />
           <div className='blog-post-back'>
-            <Link to='/' className='btn btn-secondary'>
-              ← Back to All Posts
+            <BlogShare url={`${window.location.origin}${location.pathname}`} />
+            <Link to='/' className='blog-post-back-link'>
+              ← back
             </Link>
           </div>
         </div>
